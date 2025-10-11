@@ -40,8 +40,8 @@ const footer = document.getElementById('footer');
 let brand = {
     app: {
         language: 'en',
-        name: 'MiroTalk',
-        title: 'MiroTalk<br />Free browser based Real-time video calls.<br />Simple, Secure, Fast.',
+        name: 'LetsMeet',
+        title: 'LetsMeet<br />Free browser based Real-time video calls.<br />Simple, Secure, Fast.',
         description:
             'Start your next video call with a single click. No download, plug-in, or login is required. Just get straight to talking, messaging, and sharing your screen.',
         joinDescription: 'Pick a room name.<br />How about this one?',
@@ -51,16 +51,16 @@ let brand = {
     site: {
         shortcutIcon: '../images/logo.svg',
         appleTouchIcon: '../images/logo.svg',
-        landingTitle: 'MiroTalk a Free Secure Video Calls, Chat & Screen Sharing.',
-        newCallTitle: 'MiroTalk a Free Secure Video Calls, Chat & Screen Sharing.',
+        landingTitle: 'LetsMeet a Free Secure Video Calls, Chat & Screen Sharing.',
+        newCallTitle: 'LetsMeet a Free Secure Video Calls, Chat & Screen Sharing.',
         newCallRoomTitle: 'Pick name. <br />Share URL. <br />Start conference.',
         newCallRoomDescription:
             "Each room has its disposable URL. Just pick a room name and share your custom URL. It's that easy.",
-        loginTitle: 'MiroTalk - Host Protected login required.',
-        clientTitle: 'MiroTalk WebRTC Video call, Chat Room & Screen Sharing.',
-        privacyPolicyTitle: 'MiroTalk - privacy and policy.',
+        loginTitle: 'LetsMeet - Host Protected login required.',
+        clientTitle: 'LetsMeet WebRTC Video call, Chat Room & Screen Sharing.',
+        privacyPolicyTitle: 'LetsMeet - privacy and policy.',
         stunTurnTitle: 'Test Stun/Turn Servers.',
-        notFoundTitle: 'MiroTalk - 404 Page not found.',
+        notFoundTitle: 'LetsMeet - 404 Page not found.',
     },
     html: {
         topSponsors: true,
@@ -129,7 +129,7 @@ let brand = {
                 connectText: 'connect in < 5 seconds',
                 onlineText: 'We are online',
                 offlineText: 'We are offline',
-                poweredBy: 'Powered by MiroTalk',
+                poweredBy: 'Powered by LetsMeet',
             },
         },
     },
