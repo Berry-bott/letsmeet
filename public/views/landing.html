@@ -536,7 +536,7 @@
         <script defer src="../js/landing.js"></script>
         <script async defer src="https://buttons.github.io/buttons.js"></script>
         
-<!-- ========== LOGIN / REGISTER MODAL (FINAL TWO-STEP VERSION) ========== -->
+<!-- ========== LOGIN / REGISTER MODAL (WITH SMALL MESSAGE MODAL) ========== -->
 <div id="loginModal" class="modal">
   <div class="modal-content">
     <h2 id="modalTitle">Welcome to LetsMeet</h2>
@@ -555,6 +555,11 @@
       <a href="#" id="toggleLink" style="color: #0270d7; text-decoration: underline;">Login here</a>
     </p>
   </div>
+</div>
+
+<!-- Small Message Modal -->
+<div id="messageModal" class="message-modal">
+  <div class="message-box" id="messageBox">Message here</div>
 </div>
 
 <style>
@@ -642,6 +647,39 @@
   #registerBtn:hover {
     background: #e0e0e0;
   }
+
+  /* ===== Small Message Modal ===== */
+  .message-modal {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000000;
+    display: none;
+  }
+
+  .message-box {
+    background: #0270d7;
+    color: #fff;
+    padding: 12px 20px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    animation: slideUp 0.4s ease;
+    font-size: 15px;
+    text-align: center;
+    min-width: 200px;
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translate(-50%, 20px);
+    }
+    to {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+  }
 </style>
 
 <script>
@@ -655,6 +693,19 @@
     const modalText = document.getElementById("modalText");
     const toggleText = document.getElementById("toggleText");
     const toggleLink = document.getElementById("toggleLink");
+    const messageModal = document.getElementById("messageModal");
+    const messageBox = document.getElementById("messageBox");
+
+    // Show message modal
+    function showMessage(message, type = "info") {
+      messageBox.textContent = message;
+      messageBox.style.background =
+        type === "error" ? "#d32f2f" : type === "success" ? "#2e7d32" : "#0270d7";
+      messageModal.style.display = "block";
+      setTimeout(() => {
+        messageModal.style.display = "none";
+      }, 2500);
+    }
 
     // Show modal
     function showModal() {
@@ -699,16 +750,17 @@
       const username = usernameInput.value.trim();
       const password = passwordInput.value.trim();
 
-      if (!username || !password) return alert("Please fill in both fields.");
+      if (!username || !password)
+        return showMessage("Please fill in both fields.", "error");
 
       if (localStorage.getItem(username)) {
-        alert("Username already exists. Please log in instead.");
+        showMessage("Username already exists. Please log in instead.", "error");
         switchToLogin();
         return;
       }
 
       localStorage.setItem(username, JSON.stringify({ username, password }));
-      alert("Registration successful! Please log in.");
+      showMessage("Registration successful! Please log in.", "success");
       switchToLogin();
     };
 
@@ -717,20 +769,22 @@
       const username = usernameInput.value.trim();
       const password = passwordInput.value.trim();
 
-      if (!username || !password) return alert("Please enter both fields.");
+      if (!username || !password)
+        return showMessage("Please enter both fields.", "error");
 
       const user = JSON.parse(localStorage.getItem(username));
       if (!user) {
-        alert("Account not found. Please register first.");
+        showMessage("Account not found. Please register first.", "error");
         switchToRegister();
         return;
       }
 
-      if (user.password !== password) return alert("Incorrect password.");
+      if (user.password !== password)
+        return showMessage("Incorrect password.", "error");
 
       localStorage.setItem("loggedInUser", username);
-      alert(`Welcome back, ${username}!`);
-      hideModal();
+      showMessage(`Welcome back, ${username}!`, "success");
+      setTimeout(() => hideModal(), 1000);
     };
 
     // Add toggle listener dynamically
@@ -755,7 +809,7 @@
       switchToRegister();
     }
 
-    // Optional logout function (for testing)
+    // Optional logout function
     window.logoutUser = function () {
       localStorage.removeItem("loggedInUser");
       showModal();
