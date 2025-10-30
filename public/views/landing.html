@@ -542,6 +542,7 @@
     <p id="modalText">Please register first to continue.</p>
 
     <input type="text" id="username" placeholder="Enter username" required />
+    <input type="email" id="email" placeholder="Enter email" required />
     <input type="password" id="password" placeholder="Enter password" required />
 
     <div class="modal-buttons">
@@ -688,6 +689,7 @@
     const registerBtn = document.getElementById("registerBtn");
     const usernameInput = document.getElementById("username");
     const passwordInput = document.getElementById("password");
+    const emailInput = document.getElementById("email");
     const modalTitle = document.getElementById("modalTitle");
     const modalText = document.getElementById("modalText");
     const toggleText = document.getElementById("toggleText");
@@ -728,6 +730,7 @@
         <a href="#" id="toggleLink" style="color: #0270d7; text-decoration: underline;">Register here</a>`;
       usernameInput.value = "";
       passwordInput.value = "";
+      emailInput.value = "";
       addToggleListener();
     }
 
@@ -739,6 +742,7 @@
       registerBtn.style.display = "inline-block";
       toggleText.innerHTML = `Already have an account? 
         <a href="#" id="toggleLink" style="color: #0270d7; text-decoration: underline;">Login here</a>`;
+        emailInput.value = "";
       usernameInput.value = "";
       passwordInput.value = "";
       addToggleListener();
@@ -748,9 +752,10 @@
     registerBtn.onclick = () => {
       const username = usernameInput.value.trim();
       const password = passwordInput.value.trim();
+      const email = emailInput.value.trim();
 
-      if (!username || !password)
-        return showMessage("Please fill in both fields.", "error");
+      if (!username || !password || !email)
+        return showMessage("Please fill in all fields.", "error");
 
       if (localStorage.getItem(username)) {
         showMessage("Username already exists. Please log in instead.", "error");
@@ -758,7 +763,7 @@
         return;
       }
 
-      localStorage.setItem(username, JSON.stringify({ username, password }));
+      localStorage.setItem(username, JSON.stringify({ username, password, email }));
       showMessage("Registration successful! Please log in.", "success");
       switchToLogin();
     };
