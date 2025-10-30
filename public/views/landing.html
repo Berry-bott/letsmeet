@@ -576,16 +576,17 @@
     z-index: 999999;
   }
 
-  .modal-content {
-    background: linear-gradient(135deg, #f8fafc, #e3f2fd);
-    padding: 30px 40px;
-    border-radius: 12px;
-    width: 90%;
-    max-width: 400px;
-    text-align: center;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-    animation: fadeIn 0.4s ease;
-  }
+.modal-content {
+  background: linear-gradient(135deg, #f8fafc, #e3f2fd);
+  padding: 40px 50px;
+  border-radius: 14px;
+  width: 95%;          
+  max-width: 460px;  
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  animation: fadeIn 0.4s ease;
+}
+
 
   @keyframes fadeIn {
     from {
@@ -750,22 +751,34 @@
 
     // Handle registration
     registerBtn.onclick = () => {
-      const username = usernameInput.value.trim();
-      const password = passwordInput.value.trim();
-      const email = emailInput.value.trim();
+        const username = usernameInput.value.trim();
+        const password = passwordInput.value.trim();
+        const email = emailInput.value.trim();
 
-      if (!username || !password || !email)
-        return showMessage("Please fill in all fields.", "error");
+        if (!username || !password || !email)
+            return showMessage("Please fill in all fields.", "error");
 
-      if (localStorage.getItem(username)) {
-        showMessage("Username already exists. Please log in instead.", "error");
-        switchToLogin();
-        return;
-      }
+        // Email format validation
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            return showMessage("Please enter a valid email address.", "error");
+        }
 
-      localStorage.setItem(username, JSON.stringify({ username, password, email }));
-      showMessage("Registration successful! Please log in.", "success");
-      switchToLogin();
+        // Password strength validation (at least 6 chars, one number)
+        const passwordRegex = /^(?=.*[0-9]).{6,}$/;
+        if (!passwordRegex.test(password)) {
+            return showMessage("Password must be at least 6 characters and contain a number.", "error");
+        }
+
+        if (localStorage.getItem(username)) {
+            showMessage("Username already exists. Please log in instead.", "error");
+            switchToLogin();
+            return;
+        }
+
+        localStorage.setItem(username, JSON.stringify({ username, password, email }));
+        showMessage("Registration successful! Redirecting to login...", "success");
+
     };
 
     // Handle login
@@ -774,7 +787,7 @@
       const password = passwordInput.value.trim();
 
       if (!username || !password)
-        return showMessage("Please enter both fields.", "error");
+        return showMessage("Please enter all fields.", "error");
 
       const user = JSON.parse(localStorage.getItem(username));
       if (!user) {
