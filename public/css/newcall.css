@@ -25,3 +25,121 @@
         margin-bottom: 1rem;
     }
 }
+  .modal {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(18px);
+    background: rgba(0, 0, 0, 0.35);
+    z-index: 999999;
+  }
+
+.modal-content {
+  background: linear-gradient(135deg, #f8fafc, #e3f2fd);
+  padding:10px 20px;
+  border-radius: 14px;
+  width: 95%;          
+  max-width: 460px;  
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  animation: fadeIn 0.4s ease;
+}
+
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .modal-content h3 {
+    color: #0270d7;
+    
+  }
+
+  .modal-content input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #cfd8dc;
+    border-radius: 6px;
+    outline: none;
+    font-size: 15px;
+  }
+
+  .modal-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+  }
+
+  .modal-buttons button {
+    flex: 1;
+    margin: 5px;
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 15px;
+  }
+
+  #loginBtn {
+    background: #0270d7;
+    color: #fff;
+  }
+
+  #loginBtn:hover {
+    background: #025cb5;
+  }
+
+  #registerBtn {
+    background: #f3f3f3;
+    color: #333;
+  }
+
+  #registerBtn:hover {
+    background: #e0e0e0;
+  }
+
+  /* ===== Small Message Modal ===== */
+  .message-modal {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000000;
+    display: none;
+  }
+
+  .message-box {
+    background: #0270d7;
+    color: #fff;
+    padding: 12px 20px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    animation: slideUp 0.4s ease;
+    font-size: 15px;
+    text-align: center;
+    min-width: 200px;
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translate(-50%, 20px);
+    }
+    to {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+  }

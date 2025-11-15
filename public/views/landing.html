@@ -77,13 +77,7 @@
                             <div class="m-0">
                                 <a href="/">
                                     <img src="../images/logo.svg" alt="letsMeet P2P" width="32" height="32" />
-                                    <!-- <img
-                                        src="../images/mirotalk-mc.png"
-                                        alt="MiroTalk P2P"
-                                        width="96"
-                                        height="auto"
-                                        style="margin-top: 80px"
-                                    /> -->
+                                  
                                 </a>
                             </div>
                         </div>
@@ -529,16 +523,10 @@
             </footer>
         </div>
         
-        <script defer src="../js/utils.js"></script>
-        <script defer src="../js/common.js"></script>
-        <script defer src="../js/brand.js"></script>
-        <script defer src="../js/landing.js"></script>
-        <script async defer src="https://buttons.github.io/buttons.js"></script>
-        
 <!-- ========== LOGIN / REGISTER MODAL (WITH SMALL MESSAGE MODAL) ========== -->
 <div id="loginModal" class="modal">
   <div class="modal-content">
-    <h2 id="modalTitle">Welcome to LetsMeet</h2>
+    <h3 id="modalTitle">Welcome to software and web development <br> E-Learning platform.</h3>
     <p id="modalText">Please register first to continue.</p>
 
     <input type="text" id="username" placeholder="Enter username" required />
@@ -562,280 +550,14 @@
   <div class="message-box" id="messageBox">Message here</div>
 </div>
 
-<style>
-  .modal {
-    position: fixed;
-    inset: 0;
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    backdrop-filter: blur(18px);
-    background: rgba(0, 0, 0, 0.35);
-    z-index: 999999;
-  }
-
-.modal-content {
-  background: linear-gradient(135deg, #f8fafc, #e3f2fd);
-  padding: 40px 50px;
-  border-radius: 14px;
-  width: 95%;          
-  max-width: 460px;  
-  text-align: center;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-  animation: fadeIn 0.4s ease;
-}
 
 
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: scale(0.9);
-    }
-    to {
-      opacity: 1;
-      transform: scale(1);
-    }
-  }
 
-  .modal-content h2 {
-    color: #0270d7;
-    margin-bottom: 10px;
-  }
-
-  .modal-content input {
-    width: 100%;
-    padding: 12px;
-    margin: 10px 0;
-    border: 1px solid #cfd8dc;
-    border-radius: 6px;
-    outline: none;
-    font-size: 15px;
-  }
-
-  .modal-buttons {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 15px;
-  }
-
-  .modal-buttons button {
-    flex: 1;
-    margin: 5px;
-    padding: 10px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: bold;
-    font-size: 15px;
-  }
-
-  #loginBtn {
-    background: #0270d7;
-    color: #fff;
-  }
-
-  #loginBtn:hover {
-    background: #025cb5;
-  }
-
-  #registerBtn {
-    background: #f3f3f3;
-    color: #333;
-  }
-
-  #registerBtn:hover {
-    background: #e0e0e0;
-  }
-
-  /* ===== Small Message Modal ===== */
-  .message-modal {
-    position: fixed;
-    bottom: 30px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 1000000;
-    display: none;
-  }
-
-  .message-box {
-    background: #0270d7;
-    color: #fff;
-    padding: 12px 20px;
-    border-radius: 8px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    animation: slideUp 0.4s ease;
-    font-size: 15px;
-    text-align: center;
-    min-width: 200px;
-  }
-
-  @keyframes slideUp {
-    from {
-      opacity: 0;
-      transform: translate(-50%, 20px);
-    }
-    to {
-      opacity: 1;
-      transform: translate(-50%, 0);
-    }
-  }
-</style>
-
-<script>
-  window.addEventListener("load", () => {
-    const modal = document.getElementById("loginModal");
-    const loginBtn = document.getElementById("loginBtn");
-    const registerBtn = document.getElementById("registerBtn");
-    const usernameInput = document.getElementById("username");
-    const passwordInput = document.getElementById("password");
-    const emailInput = document.getElementById("email");
-    const modalTitle = document.getElementById("modalTitle");
-    const modalText = document.getElementById("modalText");
-    const toggleText = document.getElementById("toggleText");
-    const toggleLink = document.getElementById("toggleLink");
-    const messageModal = document.getElementById("messageModal");
-    const messageBox = document.getElementById("messageBox");
-
-    // Show message modal
-    function showMessage(message, type = "info") {
-      messageBox.textContent = message;
-      messageBox.style.background =
-        type === "error" ? "#d32f2f" : type === "success" ? "#2e7d32" : "#0270d7";
-      messageModal.style.display = "block";
-      setTimeout(() => {
-        messageModal.style.display = "none";
-      }, 2500);
-    }
-
-    // Show modal
-    function showModal() {
-      modal.style.display = "flex";
-      document.body.style.overflow = "hidden";
-    }
-
-    // Hide modal
-    function hideModal() {
-      modal.style.display = "none";
-      document.body.style.overflow = "auto";
-    }
-
-    // Switch to login mode
-    function switchToLogin() {
-      modalTitle.textContent = "Login to LetsMeet";
-      modalText.textContent = "Please log in using your registered account.";
-      loginBtn.style.display = "inline-block";
-      registerBtn.style.display = "none";
-      toggleText.innerHTML = `Don't have an account? 
-        <a href="#" id="toggleLink" style="color: #0270d7; text-decoration: underline;">Register here</a>`;
-      usernameInput.value = "";
-      passwordInput.value = "";
-      emailInput.value = "";
-      addToggleListener();
-    }
-
-    // Switch to register mode
-    function switchToRegister() {
-      modalTitle.textContent = "Welcome to software and web development E Learning platform.";
-      modalText.textContent = "Please register first to continue mmmmmmm.";
-      loginBtn.style.display = "none";
-      registerBtn.style.display = "inline-block";
-      toggleText.innerHTML = `Already have an account? 
-        <a href="#" id="toggleLink" style="color: #0270d7; text-decoration: underline;">Login here</a>`;
-        emailInput.value = "";
-      usernameInput.value = "";
-      passwordInput.value = "";
-      addToggleListener();
-    }
-
-    // Handle registration
-    registerBtn.onclick = () => {
-        const username = usernameInput.value.trim();
-        const password = passwordInput.value.trim();
-        const email = emailInput.value.trim();
-
-        if (!username || !password || !email)
-            return showMessage("Please fill in all fields.", "error");
-
-        // Email format validation
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(email)) {
-            return showMessage("Please enter a valid email address.", "error");
-        }
-
-        // Password strength validation (at least 6 chars, one number)
-        const passwordRegex = /^(?=.*[0-9]).{6,}$/;
-        if (!passwordRegex.test(password)) {
-            return showMessage("Password must be at least 6 characters and contain a number.", "error");
-        }
-
-        if (localStorage.getItem(username)) {
-            showMessage("Username already exists. Please log in instead.", "error");
-            switchToLogin();
-            return;
-        }
-
-        localStorage.setItem(username, JSON.stringify({ username, password, email }));
-        showMessage("Registration successful! Redirecting to login...", "success");
-
-    };
-
-    // Handle login
-    loginBtn.onclick = () => {
-      const username = usernameInput.value.trim();
-      const password = passwordInput.value.trim();
-
-      if (!username || !password)
-        return showMessage("Please enter all fields.", "error");
-
-      const user = JSON.parse(localStorage.getItem(username));
-      if (!user) {
-        showMessage("Account not found. Please register first.", "error");
-        switchToRegister();
-        return;
-      }
-
-      if (user.password !== password)
-        return showMessage("Incorrect password.", "error");
-
-      localStorage.setItem("loggedInUser", username);
-      showMessage(`Welcome back, ${username}!`, "success");
-      setTimeout(() => hideModal(), 1000);
-    };
-
-    // Add toggle listener dynamically
-    function addToggleListener() {
-      const link = document.getElementById("toggleLink");
-      if (link.textContent.includes("Login")) {
-        link.onclick = (e) => {
-          e.preventDefault();
-          switchToLogin();
-        };
-      } else {
-        link.onclick = (e) => {
-          e.preventDefault();
-          switchToRegister();
-        };
-      }
-    }
-
-    // Show modal only if user not logged in
-    if (!localStorage.getItem("loggedInUser")) {
-      showModal();
-      switchToRegister();
-    }
-
-    // Optional logout function
-    window.logoutUser = function () {
-      localStorage.removeItem("loggedInUser");
-      showModal();
-      switchToLogin();
-    };
-  });
-</script>
-<!-- ========== END LOGIN / REGISTER MODAL ========== -->
-
-        
+        <script defer src="../js/utils.js"></script>
+        <script defer src="../js/common.js"></script>
+        <script defer src="../js/brand.js"></script>
+        <script defer src="../js/landing.js"></script>
+        <script defer src="../js/authsLogic.js"></script>
+        <script async defer src="https://buttons.github.io/buttons.js"></script>
     </body>
 </html>
