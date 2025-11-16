@@ -37,18 +37,23 @@
     }
 
     // Switch to login mode
-    function switchToLogin() {
-      modalTitle.textContent = "Login to software and web development \n E-Learning platform.";
-      modalText.textContent = "Please log in using your registered account.";
-      loginBtn.style.display = "inline-block";
-      registerBtn.style.display = "none";
-      toggleText.innerHTML = `Don't have an account? 
-        <a href="#" id="toggleLink" style="color: #0270d7; text-decoration: underline;">Register here</a>`;
-      usernameInput.value = "";
-      passwordInput.value = "";
-      emailInput.value = "";
-      addToggleListener();
-    }
+ function switchToLogin() {
+  modalTitle.textContent = "Login to software and web development \n E-Learning platform.";
+  modalText.textContent = "Please log in using your registered account.";
+
+  loginBtn.style.display = "inline-block";
+  registerBtn.style.display = "none";
+
+  toggleText.innerHTML = `Don't have an account? 
+    <a href="#" id="toggleLink" style="color: #0270d7; text-decoration: underline;">Register here</a>`;
+
+  emailInput.style.display = "none";  // 🔥 HIDE EMAIL FIELD
+  usernameInput.value = "";
+  passwordInput.value = "";
+
+  addToggleListener();
+}
+
 
     // Switch to register mode
     function switchToRegister() {
