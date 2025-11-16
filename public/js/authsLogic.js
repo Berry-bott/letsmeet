@@ -38,7 +38,7 @@
 
     // Switch to login mode
     function switchToLogin() {
-      modalTitle.textContent = "Login to LetsMeet";
+      modalTitle.textContent = "Login to software and web development <br> E-Learning platform.";
       modalText.textContent = "Please log in using your registered account.";
       loginBtn.style.display = "inline-block";
       registerBtn.style.display = "none";
@@ -53,7 +53,7 @@
     // Switch to register mode
     function switchToRegister() {
       modalTitle.textContent = "Welcome to software and web development E Learning platform.";
-      modalText.textContent = "Please register first to continue mmmmmmm.";
+      modalText.textContent = "Please register first to continue .";
       loginBtn.style.display = "none";
       registerBtn.style.display = "inline-block";
       toggleText.innerHTML = `Already have an account? 
