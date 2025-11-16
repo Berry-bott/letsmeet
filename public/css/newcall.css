@@ -37,7 +37,12 @@
     background: rgba(0, 0, 0, 0.35);
     z-index: 999999;
   }
-
+#toggleText,#toggleLink{
+   color: #0270d7;
+}
+#toggleLink:hover{
+  color: rgb(0, 54, 102);
+}
 .modal-content {
   background: linear-gradient(135deg, #f8fafc, #e3f2fd);
   padding:10px 20px;
@@ -108,7 +113,8 @@
   }
 
   #registerBtn:hover {
-    background: #e0e0e0;
+    background: #025cb5;
+    color:white;
   }
 
   /* ===== Small Message Modal ===== */
