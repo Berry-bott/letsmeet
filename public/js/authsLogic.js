@@ -38,7 +38,7 @@
 
     // Switch to login mode
     function switchToLogin() {
-      modalTitle.textContent = "Login to software and web development <br> E-Learning platform.";
+      modalTitle.textContent = "Login to software and web development \n E-Learning platform.";
       modalText.textContent = "Please log in using your registered account.";
       loginBtn.style.display = "inline-block";
       registerBtn.style.display = "none";
